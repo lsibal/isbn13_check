@@ -1,5 +1,9 @@
 class ISBN13Check
   class << self
+    def complete(code)
+      code + generate_check_digit(code).to_s
+    end
+
     def generate_check_digit(code)
       res1 = generate_check_digit_step1 code
       res2 = generate_check_digit_step2 res1

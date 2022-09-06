@@ -1,6 +1,13 @@
 require "./isbn13_check"
 
 describe ISBN13Check do
+  describe "#complete" do
+    it { expect(ISBN13Check.complete("978014300723")).to eq "9780143007234" }
+    it { expect(ISBN13Check.complete("111111111111")).to eq "1111111111116" }
+    it { expect(ISBN13Check.complete("222222222222")).to eq "2222222222222" }
+    it { expect(ISBN13Check.complete("849576213211")).to eq "8495762132113" }
+  end
+
   describe "#generate_check_digit" do
     subject { ISBN13Check.generate_check_digit code }
     let(:code) { "978014300723" }
